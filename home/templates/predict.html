@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" />
+    <title>PREDICTIONS</title>
+    <style>
+      .main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 24px;
+        color: Black;
+      }
+
+      form {
+        margin-top: 80px;
+      }
+
+      .row {
+        margin-bottom: 20px;
+      }
+
+      .col-sm-4 {
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        font-family: monospace;
+        background-color: #f3f7fe;
+        color: #3b82f6;
+        border: none;
+        border-radius: 8px;
+        width: 100px;
+        height: 45px;
+        transition: 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3b82f6;
+        box-shadow: 0 0 0 5px #3b83f65f;
+        color: #fff;
+      }
+      .main {
+        z-index: -999;
+        margin-top: 60px;
+      }
+      body {
+        background-image: url("{% static 'wall.jpg' %}");
+        background-attachment: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>VUI LÒNG NHẬP GIÁ TRỊ:</h2>
+    <div class="main">
+      <br />
+      <form action="/predict/result" method="GET">
+        <div class="row">
+          <div class="col-sm-4" style="background-color: Bisque">
+            <p>Avg.Area Income</p>
+            <input type="text" name="n1" required placeholder="Nhập số thu nhập" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4" style="background-color: LightPink">
+            <p>Avg.Area House Age</p>
+            <input type="text" name="n2" required placeholder="Nhập số tuổi đời của nhà" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4" style="background-color: Turquoise">
+            <p>Avg.Area Number of Rooms</p>
+            <input type="text" name="n3" required placeholder="Nhập số phòng" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4" style="background-color: Yellow">
+            <p>Avg.Area Number of Bedrooms</p>
+            <input type="text" name="n4" required placeholder="Nhập số phòng ngủ" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4" style="background-color: RosyBrown">
+            <p>Avg.Area Population</p>
+            <input type="text" name="n5" required placeholder="Nhập số thành viên" />
+          </div>
+        </div>
+
+        <div class="row">
+          <input type="submit" value="PREDICT" />
+        </div>
+      </form>
+      <div class="row">
+        <h2 style="color: red">{{result2}}</h2>
+      </div>
+    </div>
+  </body>
+</html>
